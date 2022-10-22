@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -16,6 +15,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NdtLab.Core\NdtLab.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Inspections\" />
+    <Folder Include="Controllers\Joints\" />
+    <Folder Include="Controllers\Requests\" />
+    <Folder Include="Controllers\Welders\" />
   </ItemGroup>
 
 </Project>
