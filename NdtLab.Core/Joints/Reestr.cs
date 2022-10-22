@@ -7,7 +7,7 @@ namespace NdtLab.Core.Joints
         public DateTime Date { get; set; }
         public string Number { get; set; }
         /// <summary>
-        /// кто передал
+        /// кто  передал
         /// </summary>
         public string Sender { get; set; }
         /// <summary>
