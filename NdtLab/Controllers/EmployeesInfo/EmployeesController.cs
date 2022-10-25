@@ -15,11 +15,8 @@ namespace NdtLab.Controllers.EmployeesInfo
             _context = context;
         }
 
+
         [HttpPost("[action]")]
-
-
-
-
         public IActionResult Create(CreateEmployeeDto input)
         {
             _context.Employees.Add(input.Employee);
