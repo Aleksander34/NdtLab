@@ -15,5 +15,10 @@ namespace NdtLab.Core.Requests
         /// Номер спула/участка 
         /// </summary>
         public string Spool { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ zone: {Zone}, line: {Line}, spool: {Spool} }}";
+        }
     }
 }

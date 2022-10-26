@@ -35,7 +35,7 @@ namespace NdtLab.Controllers.Requests
             var tank = _context.Tanks.Find(id);
             _context.Tanks.Remove(tank);
             _context.SaveChanges();
-            return Ok($"Резервуар {tank} удален");
+            return Ok($"Резервуар {tank.Id} удален");
         }
 
         [HttpPost("[action]")]
@@ -43,7 +43,7 @@ namespace NdtLab.Controllers.Requests
         {
             _context.Tanks.Update(tank);
             _context.SaveChanges();
-            return Ok($"Резервуар {tank} обновлен");
+            return Ok($"Резервуар {tank.Id} обновлен");
         }
     }
 }

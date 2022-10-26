@@ -25,7 +25,7 @@ namespace NdtLab.Controllers.Requests
         public IActionResult GetAll()
         {
             var pipings = _context.Pipings.ToList();
-            return Ok($"Характеристики трубопроводов {pipings} успешно возвращены");
+            return Ok(pipings);
         }
 
         [HttpPost("[action]")]
@@ -34,7 +34,7 @@ namespace NdtLab.Controllers.Requests
             var piping = _context.Pipings.Find(id);  // а что если в пипинг будет несколько колонок с id. как искать именно в колонке id???
             _context.Pipings.Remove(piping);
             _context.SaveChanges();
-            return Ok($"Характеристики трубопровода {piping.Id} {piping.Zone} {piping.Line} успешно удалены ");
+            return Ok($"Характеристики трубопровода {piping.Id} успешно удалены ");
         }
 
         [HttpPost("[action]")]
@@ -42,7 +42,7 @@ namespace NdtLab.Controllers.Requests
         {
             _context.Pipings.Update(piping);
             _context.SaveChanges();
-            return Ok($"Характеристики трубопровода {piping} успешно обновлены ");
+            return Ok($"Характеристики трубопровода {piping.Id} успешно обновлены ");
         }
     }
 }

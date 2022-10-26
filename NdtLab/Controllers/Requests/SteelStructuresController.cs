@@ -34,7 +34,7 @@ namespace NdtLab.Controllers.Requests
             var steelStructure = _context.SteelStructures.Find(id);
             _context.SteelStructures.Remove(steelStructure);
             _context.SaveChanges();
-            return Ok($"Металлоконструкция {steelStructure} удалена");
+            return Ok($"Металлоконструкция {steelStructure.Id} удалена");
         }
 
         [HttpPost("[action]")]
@@ -42,7 +42,7 @@ namespace NdtLab.Controllers.Requests
         {
             _context.SteelStructures.Update(steelStructure);
             _context.SaveChanges();
-            return Ok($"Металлоконструкции {steelStructure} обновлены");
+            return Ok($"Металлоконструкции {steelStructure.Id} обновлены");
         }
     }
 }

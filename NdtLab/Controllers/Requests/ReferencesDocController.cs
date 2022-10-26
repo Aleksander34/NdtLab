@@ -34,7 +34,7 @@ namespace NdtLab.Controllers.Requests
             var referencesDoc = _context.ReferencesDocs.Find(id);
             _context.ReferencesDocs.Remove(referencesDoc);
             _context.SaveChanges();
-            return Ok($"НТД {referencesDoc} удалены");
+            return Ok($"НТД {referencesDoc.Id} удалены");
         }
 
         [HttpPost("[action]")]
@@ -42,7 +42,7 @@ namespace NdtLab.Controllers.Requests
         {
             _context.ReferencesDocs.Update(referencesDoc);
             _context.SaveChanges();
-            return Ok($"НТД {referencesDoc} обновлен");
+            return Ok($"НТД {referencesDoc.Id} обновлен");
         }
     }
 }

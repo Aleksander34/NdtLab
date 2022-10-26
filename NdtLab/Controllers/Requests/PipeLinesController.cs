@@ -5,10 +5,10 @@ using NdtLab.Core.Requests;
 
 namespace NdtLab.Controllers.Requests
 {
-    public class PipeLinesConroller : NdtLabController
+    public class PipeLinesController : NdtLabController
     {
         private readonly NdtLabContext _context;
-        public PipeLinesConroller(NdtLabContext context)
+        public PipeLinesController(NdtLabContext context)
         {
             _context = context;
         }
@@ -34,7 +34,7 @@ namespace NdtLab.Controllers.Requests
             var pipeLine = _context.PipeLines.Find(id);
             _context.PipeLines.Remove(pipeLine);
             _context.SaveChanges();
-            return Ok($"Магистральный трубопровод {pipeLine} удален");
+            return Ok($"Магистральный трубопровод {pipeLine.Id} удален");
         }
 
         [HttpPost("[action]")]
@@ -42,7 +42,7 @@ namespace NdtLab.Controllers.Requests
         {
             _context.PipeLines.Update(pipeLine);
             _context.SaveChanges();
-            return Ok($"Магистральный трубопровод {pipeLine} обновлен");
+            return Ok($"Магистральный трубопровод {pipeLine.Id} обновлен");
         }
 
     }
