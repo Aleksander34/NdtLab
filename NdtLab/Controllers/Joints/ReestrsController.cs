@@ -34,7 +34,7 @@ namespace NdtLab.Controllers.Joints
             var reestr = _context.Reestrs.Find(id);
             _context.Reestrs.Remove(reestr);
             _context.SaveChanges();
-            return Ok($"Реестр {reestr} удален");
+            return Ok($"Реестр {reestr.Id} удален");
         }
 
         [HttpPost("[action]")]
@@ -42,7 +42,7 @@ namespace NdtLab.Controllers.Joints
         {
             _context.Reestrs.Update(reestr);
             _context.SaveChanges();
-            return Ok($"Реестр {reestr} обновлен");
+            return Ok($"Реестр {reestr.Id} обновлен");
         }
     }
 }

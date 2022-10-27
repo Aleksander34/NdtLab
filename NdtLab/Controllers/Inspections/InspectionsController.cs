@@ -34,7 +34,7 @@ namespace NdtLab.Controllers.Inspections
             var inspection = _context.Inspections.Find(id);
             _context.Inspections.Remove(inspection);
             _context.SaveChanges();
-            return Ok($"Инспекция {inspection} удалена");
+            return Ok($"Инспекция {inspection.Id} удалена");
         }
 
         [HttpPost("[action]")]
@@ -42,7 +42,7 @@ namespace NdtLab.Controllers.Inspections
         {
             _context.Inspections.Update(inspection);
             _context.SaveChanges();
-            return Ok($"Инспекция {inspection} обновлена");
+            return Ok($"Инспекция {inspection.Id} обновлена");
         }
     }
 }

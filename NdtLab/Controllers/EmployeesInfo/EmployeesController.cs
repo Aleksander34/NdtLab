@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NdtLab.Core;
 using NdtLab.Core.employeesInfo;
@@ -36,7 +35,7 @@ namespace NdtLab.Controllers.EmployeesInfo
         [HttpGet("[action]")]
         public IActionResult GetAll()
         {
-            var employees = _context.Employees.Include(x=>x.Phones).ToList();
+            var employees = _context.Employees.Include(x => x.Phones).ToList();
             return Ok(employees);
         }
 

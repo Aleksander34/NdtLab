@@ -11,5 +11,10 @@ namespace NdtLab.Core.Requests
         /// Номер сектора металлоконструкции
         /// </summary>
         public string Sector { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ part: {Part}, sector: {Sector}}}";
+        }
     }
 }

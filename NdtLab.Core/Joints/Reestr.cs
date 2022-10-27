@@ -14,5 +14,10 @@ namespace NdtLab.Core.Joints
         /// Кто получил
         /// </summary>
         public string Recipient { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Дата: {Date}, Номер: {Number} Кто передал: {Sender}, Кто получил: {Recipient}}}";
+        }
     }
 }

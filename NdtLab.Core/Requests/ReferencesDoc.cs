@@ -20,4 +20,9 @@ public class ReferencesDoc : Entity
     /// </summary>
     public string QualityCriteria { get; set; }
 
+    public override string ToString()
+    {
+        return $"{{ mainDoc: {MainDoc}, weldingDoc: {WeldingDoc}, inspectionDoc: {InspectionDoc}, qualityCriteria: {QualityCriteria}}}";
+    }
+
 }

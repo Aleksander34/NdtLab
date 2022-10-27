@@ -18,7 +18,7 @@ namespace NdtLab.Controllers.Requests
         {
             _context.Qualifications.Add(qualification);
             _context.SaveChanges();
-            return Ok($"Квалификация {qualification.Name} добавлена");
+            return Ok($"Квалификация {qualification} добавлена");
         }
 
         [HttpGet("[action]")]
@@ -34,7 +34,7 @@ namespace NdtLab.Controllers.Requests
             var qualification = _context.Qualifications.Find(id);
             _context.Qualifications.Remove(qualification);
             _context.SaveChanges();
-            return Ok($"Квалификация {qualification.Name} удалена");
+            return Ok($"Квалификация {qualification.Id} удалена");
         }
 
         [HttpPost("[action]")]
@@ -42,7 +42,7 @@ namespace NdtLab.Controllers.Requests
         {
             _context.Qualifications.Update(qualification);
             _context.SaveChanges();
-            return Ok($"Квалификация {qualification.Name} обновлена");
+            return Ok($"Квалификация {qualification.Id} обновлена");
         }
     }
 }

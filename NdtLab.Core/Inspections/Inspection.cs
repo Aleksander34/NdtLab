@@ -40,5 +40,10 @@ namespace NdtLab.core.Inspections
         /// </summary>
         public string Description { get; set; }
         public virtual ICollection<InspectionEmployee> InspectionEmployees { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Id Стыка: {JointId}, Вид: {Name} Требуется да/нет: {IsRequired}, Дата: {Date}, дата заключения {ReportDate}, Номер заключения{ReportNumber}, результат {Result}, Описание дефектов {Description}}}";
+        }
     }
 }

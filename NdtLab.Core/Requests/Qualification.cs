@@ -4,6 +4,10 @@ namespace NdtLab.Core.Requests
 {
     public class Qualification : Entity
     {
-        public string Name {get;set;}
+        public TypeQualification TypeQualification { get;set;}
+        public override string ToString()
+        {
+            return $"{{ Type of qualification: {TypeQualification}}}";
+        }
     }
 }
