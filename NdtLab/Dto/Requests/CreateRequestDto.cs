@@ -4,7 +4,7 @@ using NdtLab.Core.Requests;
 namespace NdtLab.Dto.Requests
 {
     [AutoMap(typeof(Request),ReverseMap =true)]
-    public class CreateRequestDto
+    public class CreateRequestDto : Entity //??
     {
         public int? PipingId { get; set; }
 

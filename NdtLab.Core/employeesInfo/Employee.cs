@@ -1,12 +1,12 @@
-﻿using NdtLab.core.Inspections;
+﻿using NdtLab.core;
+using NdtLab.core.Inspections;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace NdtLab.Core.employeesInfo
 {
-    public class Employee
+    public class Employee: Entity
     {
-        public int Id { get; set; }
         public string LastName { get; set; }
         public string Name { get; set; }
         public string MiddleName { get; set; }
@@ -31,5 +31,10 @@ namespace NdtLab.Core.employeesInfo
         public Position Position { get; set; }
         [JsonIgnore]
         public virtual ICollection<InspectionEmployee> InspectionEmployees { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Фамилия: {LastName}, Имя: {Name} Отчество: {MiddleName}, Логин: {Login}, Пароль: {Password}, Электронная почта: {Email}, Роль: {RoleId}, Подразделение: {DivisionId}, Должность: {PositionId}}}";
+        }
     }
 }

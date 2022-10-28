@@ -47,6 +47,10 @@ namespace NdtLab.core.Joints
         public virtual ICollection<DifficultJoint>DifficultJoints { get; set; }
         public virtual ICollection<WelderJoint> WelderJoints { get; set; }
 
-
+        public override string ToString()
+        {
+            return $"{{ Id заявки: {RequestId}, Id реестра: {ReestrId} Контролирующая компания: {InspectionCompany}, Номер: {Number}, Дата сварки: {WeldingDate}, Тип сварки: {WeldingType}, Тип соединения: {ConnectionType}, Элемент 1: {ElementOne}, Элемент 2: {ElementTwo}" +
+                $"Марка стали 1: {GradeOne}, Марка стали 2: {GradeTwo} Толщина 1: {ThicknessOne}, Толщина 2: {ThicknessTwo}, Диаметр 1: {DiameterOne}, Диаметр 2: {DiameterTwo}, Длина сварного шва: {WeldLength}, Статус: {Status}, Примечание: {Note}}}";
+        }
     }
 }

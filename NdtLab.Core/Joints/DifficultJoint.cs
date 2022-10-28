@@ -12,5 +12,10 @@ namespace NdtLab.Core.Joints
         public int JointId { get; set; }
         [ForeignKey("JointId")]
         public Joint Joint { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Id трудности/ограничения: {DifficultId}, Id стыка: {JointId}}}";
+        }
     }
 }

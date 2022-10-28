@@ -6,5 +6,10 @@ namespace NdtLab.Core.Joints
     {
         public string Name { get; set; }
         public virtual ICollection<DifficultJoint> DifficultJoints { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Трудности/Ограничения: {Name}}}";
+        }
     }
 }

@@ -11,5 +11,10 @@ namespace NdtLab.core.Inspections
         public int EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Id инспекции: {InspectionId}, Id работника{EmployeeId}}}";
+        }
     }
 }

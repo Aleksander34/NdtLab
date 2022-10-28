@@ -38,9 +38,6 @@ namespace NdtLab.Core.Requests
         /// <summary>
         /// Подразделение/Город
         /// </summary>
-        /// <summary>
-        /// Подразделение/Город
-        /// </summary>
         public int DivisionId { get; set; }
         [ForeignKey("DivisionId")]
         public Division Division { get; set; }
@@ -87,5 +84,14 @@ namespace NdtLab.Core.Requests
         /// Температура эксплуатации
         /// </summary>
         public int? Temperature { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{ Id трубопровода: {PipingId}, Id металлоконструкций: {SteelStructureId} Id резервуара: {TankId}, Id магистрального трубопровода: {PipeLineId}, " +
+                $"Id ссылочных документов: {ReferencesDocId}, Id подразделения: {DivisionId}, Id квалификации: {QualificationId}, Арматура: {Rebar}, " +
+                $"компания по сварке: {WeldingCompany}, объект: {Object}, подобъект: {PartObject} Номер 1: {Number}, " +
+                $"дата: {Date}, чертеж: {Draw}, категория ГОСТ: {CategoryGOST}, прочая категория: {OtherCategory}, " +
+                $"температура: {Temperature}}}";
+        }
     }
 }

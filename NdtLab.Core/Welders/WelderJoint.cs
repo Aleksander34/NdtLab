@@ -12,5 +12,10 @@ namespace NdtLab.core.Welders
         [ForeignKey("JointId")]
         public Joint Joint { get; set; }
 
+        public override string ToString()
+        {
+            return $"{{ Id стыка: {JointId}, Id сварщика: {WelderId}}}";
+        }
+
     }
 }
