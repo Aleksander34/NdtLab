@@ -9,7 +9,7 @@ namespace NdtLab.Core.employeesInfo
 
         public override string ToString()
         {
-            return $"{{ Наименование подразделения: {Name}}}";
+            return $"{{ наименование подразделения: {Name}}}";
         }
     }
 }

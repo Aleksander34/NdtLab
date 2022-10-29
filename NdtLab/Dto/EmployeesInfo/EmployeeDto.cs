@@ -4,7 +4,7 @@ using NdtLab.Core.employeesInfo;
 namespace NdtLab.Dto.EmployeesInfo
 {
     [AutoMap(typeof(Employee), ReverseMap = true)]
-    public class CreateEmployeeDto
+    public class EmployeeDto : EntityDto
     {
         public string LastName { get; set; }
         public string Name { get; set; }
@@ -12,11 +12,11 @@ namespace NdtLab.Dto.EmployeesInfo
         public string Login { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public string[] PhoneNumbers { get; set; } 
+
+        public ICollection<PhoneDto> Phones { get; set; }
         public int RoleId { get; set; }
-
         public int DivisionId { get; set; }
-
         public int PositionId { get; set; }
+
     }
 }

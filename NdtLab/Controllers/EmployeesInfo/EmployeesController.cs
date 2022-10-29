@@ -1,42 +1,49 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NdtLab.Core;
 using NdtLab.Core.employeesInfo;
 using NdtLab.Dto.EmployeesInfo;
+using System.Collections;
 
 namespace NdtLab.Controllers.EmployeesInfo
 {
     public class EmployeesController : NdtLabController
     {
         private readonly NdtLabContext _context;
-        public EmployeesController(NdtLabContext context)
+        private readonly IMapper _mapper;
+        public EmployeesController(NdtLabContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
 
         [HttpPost("[action]")]
         public IActionResult Create(CreateEmployeeDto input)
         {
-            _context.Employees.Add(input.Employee);
+            var employee = _mapper.Map<Employee>(input);
+            _context.Employees.Add(employee);
             _context.SaveChanges();
+
             foreach (var phoneNumber in input.PhoneNumbers)
             {
                 _context.Phones.Add(new Phone
                 {
-                    UserId = input.Employee.Id,
+                    EmployeeId = employee.Id,
                     Number = phoneNumber
                 });
                 _context.SaveChanges();
             }
-            return Ok($"Сотрудник {input.Employee.Name} добавлен");
+            return Ok($"Сотрудник {input.Name} добавлен");
         }
 
         [HttpGet("[action]")]
         public IActionResult GetAll()
         {
             var employees = _context.Employees.Include(x => x.Phones).ToList();
-            return Ok(employees);
+            var result = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
+            return Ok(result);
         }
 
 
@@ -51,25 +58,29 @@ namespace NdtLab.Controllers.EmployeesInfo
         }
 
         [HttpPost("[action]")]
-        public IActionResult Update(CreateEmployeeDto input)
+        public IActionResult Update(EmployeeDto input)
         {
-            _context.Employees.Update(input.Employee);
-            var phones = _context.Phones.Where(x => x.UserId == input.Employee.Id).ToList();
+            var employee = _mapper.Map<Employee>(input);
+            employee.Phones = null;
+            _context.Employees.Update(employee);
+            _context.SaveChanges();
+
+            var phones = _context.Phones.Where(x => x.EmployeeId == input.Id).ToList();
             foreach (var p in phones)
             {
                 _context.Phones.Remove(p);
             }
             _context.SaveChanges();
-            foreach (var phoneNumber in input.PhoneNumbers)
+            foreach (var phone in input.Phones)
             {
                 _context.Phones.Add(new Phone
                 {
-                    UserId = input.Employee.Id,
-                    Number = phoneNumber
+                    EmployeeId = employee.Id,
+                    Number = phone.Number
                 });
                 _context.SaveChanges();
             }
-            return Ok($"Сотрудник {input.Employee.Name} обновлен");
+            return Ok($"Сотрудник {input.Name} обновлен");
         }
     }
 }

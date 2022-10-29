@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using NdtLab.core.Joints;
+using NdtLab.core.Welders;
+using NdtLab.Core.Joints;
 
 namespace NdtLab.Dto.Joints
 {
@@ -24,7 +26,7 @@ namespace NdtLab.Dto.Joints
         public double? WeldLength { get; set; }
         public string? Status { get; set; }
         public string? Note { get; set; }
-        public virtual ICollection<DifficultJoint> DifficultJoints { get; set; }   //????????
-        public virtual ICollection<WelderJoint> WelderJoints { get; set; }         //????????
+        public virtual ICollection<DifficultJoint> DifficultJoints { get; set; }   
+        public virtual ICollection<WelderJoint> WelderJoints { get; set; }      
     }
 }

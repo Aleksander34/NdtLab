@@ -3,8 +3,8 @@ using NdtLab.Core.employeesInfo;
 
 namespace NdtLab.Dto.EmployeesInfo
 {
-    [AutoMap(typeof(Division), ReverseMap = true)]
-    public class CreateDivisionDto
+    [AutoMap(typeof(Role), ReverseMap = true)]
+    public class RoleDto : EntityDto
     {
         public string Name { get; set; }
     }
