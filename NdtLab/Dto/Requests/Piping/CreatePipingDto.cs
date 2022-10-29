@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using NdtLab.Core.Requests;
 
-namespace NdtLab.Dto.Requests
+namespace NdtLab.Dto.Requests.Piping
 {
     [AutoMap(typeof(Piping), ReverseMap = true)]
     public class CreatePipingDto

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using NdtLab.Core.Requests;
 
-namespace NdtLab.Dto.Requests
+namespace NdtLab.Dto.Requests.SteelStructureDto
 {
     [AutoMap(typeof(SteelStructure), ReverseMap = true)]
     public class CreateSteelStructureDto

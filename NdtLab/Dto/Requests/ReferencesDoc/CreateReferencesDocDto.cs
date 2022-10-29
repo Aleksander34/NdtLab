@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using NdtLab.Core.Requests;
 
-namespace NdtLab.Dto.Requests
+namespace NdtLab.Dto.Requests.ReferencesDoc
 {
     [AutoMap(typeof(ReferencesDoc), ReverseMap = true)]
     public class CreateReferencesDocDto

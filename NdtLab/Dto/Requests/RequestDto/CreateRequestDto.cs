@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using NdtLab.Core.Requests;
 
-namespace NdtLab.Dto.Requests
+namespace NdtLab.Dto.Requests.RequestDto
 {
-    [AutoMap(typeof(Request),ReverseMap =true)]
+    [AutoMap(typeof(Request), ReverseMap = true)]
     public class CreateRequestDto
     {
         public int? PipingId { get; set; }
@@ -12,29 +12,29 @@ namespace NdtLab.Dto.Requests
         /// Металлоконструкции
         /// </summary>
         public int? SteelStructureId { get; set; }
-        
+
         /// <summary>
         /// Резервуары
         /// </summary>
         public int? TankId { get; set; }
-        
+
         /// <summary>
         /// Магистральный Трубопровод
         /// </summary>
         public int? PipeLineId { get; set; }
-        
+
         /// <summary>
         /// НТД нормативные документы
         /// </summary>
         public int? ReferencesDocId { get; set; }
-        
+
         /// <summary>
         /// Подразделение/Город
         /// </summary>
         public int DivisionId { get; set; }
-        
+
         public int? QualificationId { get; set; }
-        
+
         /// <summary>
         /// Арматура
         /// </summary>
@@ -62,7 +62,7 @@ namespace NdtLab.Dto.Requests
         /// <summary>
         /// Номер чертежа
         /// </summary>
-        public string? Draw { get; set; }
+        public string Draw { get; set; }
         /// <summary>
         /// Категория ГОСТ
         /// </summary>

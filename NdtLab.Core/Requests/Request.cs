@@ -71,7 +71,7 @@ namespace NdtLab.Core.Requests
         /// <summary>
         /// Номер чертежа
         /// </summary>
-        public string? Draw { get; set; }
+        public string Draw { get; set; }
         /// <summary>
         /// Категория ГОСТ
         /// </summary>

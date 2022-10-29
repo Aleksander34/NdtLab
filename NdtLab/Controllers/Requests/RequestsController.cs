@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
-using NdtLab.Dto.Requests;
+using NdtLab.Dto.Requests.RequestDto;
 
 namespace NdtLab.Controllers.Requests
 {
