@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using NdtLab.Core.Requests;
 
-namespace NdtLab.Dto.Requests.Piping
+namespace NdtLab.Dto.Requests
 {
     [AutoMap(typeof(Piping), ReverseMap = true)]
-    public class CreatePipingDto
+    public class PipingDto : EntityDto
     {
         /// <summary>
         /// Номер зоны

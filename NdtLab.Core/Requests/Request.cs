@@ -75,7 +75,7 @@ namespace NdtLab.Core.Requests
         /// <summary>
         /// Категория ГОСТ
         /// </summary>
-        public string CategoryGOST { get; set; }
+        public string CategoryGost { get; set; }
         /// <summary>
         /// Иная категория
         /// </summary>
@@ -90,7 +90,7 @@ namespace NdtLab.Core.Requests
             return $"{{ Id трубопровода: {PipingId}, Id металлоконструкций: {SteelStructureId} Id резервуара: {TankId}, Id магистрального трубопровода: {PipeLineId}, " +
                 $"Id ссылочных документов: {ReferencesDocId}, Id подразделения: {DivisionId}, Id квалификации: {QualificationId}, Арматура: {Rebar}, " +
                 $"компания по сварке: {WeldingCompany}, объект: {Object}, подобъект: {PartObject} Номер 1: {Number}, " +
-                $"дата: {Date}, чертеж: {Draw}, категория ГОСТ: {CategoryGOST}, прочая категория: {OtherCategory}, " +
+                $"дата: {Date}, чертеж: {Draw}, категория ГОСТ: {CategoryGost}, прочая категория: {OtherCategory}, " +
                 $"температура: {Temperature}}}";
         }
     }

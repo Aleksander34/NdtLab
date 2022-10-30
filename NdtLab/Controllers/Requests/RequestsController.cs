@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
-using NdtLab.Dto.Requests.RequestDto;
+using NdtLab.Dto.Requests;
 
 namespace NdtLab.Controllers.Requests
 {
@@ -17,14 +17,31 @@ namespace NdtLab.Controllers.Requests
             _mapper = mapper;
         }
 
+        [HttpGet("[action]")]
+        public IActionResult GetAll()
+        {
+            var requests = _context.Requests.ToList();
+            var result = _mapper.Map<IEnumerable<RequestDto>>(requests);
+            return Ok(result);
+        }
+
         [HttpPost("[action]")]
-        public IActionResult Create(CreateRequestDto input)
+        public IActionResult Create(RequestDto input)
         {
             var request = _mapper.Map<Request>(input);
             _context.Requests.Add(request);
             _context.SaveChanges();
             
-            return Ok($"Сотрудник {request} добавлен");
+            return Ok($"Заяка {request.Id} добавлена");
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Remove(int id)
+        {
+            var request = _context.Requests.Find(id);
+            _context.Requests.Remove(request);
+            _context.SaveChanges();
+            return Ok($"Заявка {request.Id} удалена");
         }
     }
 }

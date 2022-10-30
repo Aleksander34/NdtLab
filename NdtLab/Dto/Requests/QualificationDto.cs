@@ -4,8 +4,8 @@ using NdtLab.Core.Requests;
 namespace NdtLab.Dto.Requests
 {
     [AutoMap(typeof(Qualification), ReverseMap = true)]
-    public class QualificationDto
+    public class QualificationDto : EntityDto
     {
-        public TypeQualification TypeQualification { get; set; }
+        public TypeQualification Type { get; set; }
     }
 }

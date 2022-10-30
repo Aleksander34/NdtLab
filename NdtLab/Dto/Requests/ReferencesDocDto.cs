@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using NdtLab.Core.Requests;
 
-namespace NdtLab.Dto.Requests.ReferencesDoc
+namespace NdtLab.Dto.Requests
 {
     [AutoMap(typeof(ReferencesDoc), ReverseMap = true)]
-    public class CreateReferencesDocDto
+    public class ReferencesDocDto : EntityDto
     {
         public string MainDoc { get; set; }
         /// <summary>

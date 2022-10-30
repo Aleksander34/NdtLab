@@ -4,8 +4,8 @@ using NdtLab.Core.Requests;
 namespace NdtLab.Dto.Requests
 {
     [AutoMap(typeof(Tank), ReverseMap = true)]
-    public class TankDto
+    public class TankDto : EntityDto
     {
-        public PartTank PartTank { get; set; }
+        public PartTank Part { get; set; }
     }
 }
