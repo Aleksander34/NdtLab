@@ -43,5 +43,13 @@ namespace NdtLab.Controllers.Requests
             _context.SaveChanges();
             return Ok($"Заявка {request.Id} удалена");
         }
+
+        public IActionResult Update(RequestDto input)
+        {
+            var request = _mapper.Map<Request>(input);
+            _context.Requests.Update(request);
+            _context.SaveChanges();
+            return Ok($"Заяка {request.Id} обновлена");
+        }
     }
 }

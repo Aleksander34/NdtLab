@@ -1,24 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
+using NdtLab.Dto.Requests;
 
 namespace NdtLab.Controllers.Requests
 {
     public class PipingsController : NdtLabController
     {
+        private readonly IMapper _mapper;
         private readonly NdtLabContext _context;
-        public PipingsController(NdtLabContext context)
+        public PipingsController(NdtLabContext context, IMapper mapper)
         {
             _context = context;
-        }
-
-        [HttpPost("[action]")]
-        public IActionResult Create(Piping piping)
-        {
-            _context.Pipings.Add(piping);
-            _context.SaveChanges();
-            return Ok($"Характеристики трубопровода {piping} успешно созданы ");
+            _mapper = mapper;
         }
 
         [HttpGet("[action]")]
@@ -26,6 +22,15 @@ namespace NdtLab.Controllers.Requests
         {
             var pipings = _context.Pipings.ToList();
             return Ok(pipings);
+        }
+
+
+        [HttpPost("[action]")]
+        public IActionResult Create(Piping piping)
+        {
+            _context.Pipings.Add(piping);
+            _context.SaveChanges();
+            return Ok($"Характеристики трубопровода {piping} успешно созданы ");
         }
 
         [HttpPost("[action]")]
