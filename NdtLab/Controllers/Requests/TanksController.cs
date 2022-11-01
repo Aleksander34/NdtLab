@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
@@ -8,10 +9,12 @@ namespace NdtLab.Controllers.Requests
 
     public class TanksController : NdtLabController
     {
-         private readonly NdtLabContext _context;
-        public TanksController(NdtLabContext context)
+        private readonly IMapper _mapper;
+        private readonly NdtLabContext _context;
+        public TanksController(NdtLabContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpPost("[action]")]

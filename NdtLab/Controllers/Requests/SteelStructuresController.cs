@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
@@ -7,10 +8,12 @@ namespace NdtLab.Controllers.Requests
 {
     public class SteelStructuresController : NdtLabController
     {
+        private readonly IMapper _mapper;
         private readonly NdtLabContext _context;
-        public SteelStructuresController(NdtLabContext context)
+        public SteelStructuresController(NdtLabContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpPost("[action]")]

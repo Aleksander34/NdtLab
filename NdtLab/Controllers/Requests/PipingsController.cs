@@ -21,16 +21,19 @@ namespace NdtLab.Controllers.Requests
         public IActionResult GetAll()
         {
             var pipings = _context.Pipings.ToList();
-            return Ok(pipings);
+            var result = _mapper.Map<IEnumerable<PipingDto>>(pipings);
+            return Ok(result);
         }
 
 
         [HttpPost("[action]")]
-        public IActionResult Create(Piping piping)
+        public IActionResult Create(PipingDto input)
         {
+            var piping = _mapper.Map<Piping>(input);
             _context.Pipings.Add(piping);
             _context.SaveChanges();
-            return Ok($"Характеристики трубопровода {piping} успешно созданы ");
+
+            return Ok($"трубопроводы {piping.Id} добавлен");
         }
 
         [HttpPost("[action]")]
@@ -43,11 +46,12 @@ namespace NdtLab.Controllers.Requests
         }
 
         [HttpPost("[action]")]
-        public IActionResult Update(Piping piping)
+        public IActionResult Update(PipingDto input)
         {
+            var piping = _mapper.Map<Piping>(input);
             _context.Pipings.Update(piping);
             _context.SaveChanges();
-            return Ok($"Характеристики трубопровода {piping.Id} успешно обновлены ");
+            return Ok($"Трубопровод {piping.Id} обновлен");
         }
     }
 }

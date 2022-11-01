@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
@@ -7,10 +8,12 @@ namespace NdtLab.Controllers.Requests
 {
     public class QualificationsController : NdtLabController
     {
+        private readonly IMapper _mapper;
         private readonly NdtLabContext _context;
-        public QualificationsController(NdtLabContext context)
+        public QualificationsController(NdtLabContext context, IMapper mapper = null)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpPost("[action]")]
