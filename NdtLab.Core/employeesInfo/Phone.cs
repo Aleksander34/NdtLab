@@ -6,7 +6,7 @@ namespace NdtLab.Core.employeesInfo
     public class Phone: Entity
     {
         public string Number { get; set; }
-        public int EmployeeId { get; set; }    //заменить на EmployeeId
+        public int EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }
 

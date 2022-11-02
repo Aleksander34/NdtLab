@@ -1,4 +1,5 @@
-﻿using NdtLab.core.Welders;
+﻿using NdtLab.core.Inspections;
+using NdtLab.core.Welders;
 using NdtLab.Core.Joints;
 using NdtLab.Core.Requests;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -46,6 +47,7 @@ namespace NdtLab.core.Joints
         public string Note { get; set; }
         public virtual ICollection<DifficultJoint>DifficultJoints { get; set; }
         public virtual ICollection<WelderJoint> WelderJoints { get; set; }
+        public virtual ICollection<Inspection> Inspections { get; set; } // добавил
 
         public override string ToString()
         {

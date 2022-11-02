@@ -25,7 +25,10 @@ namespace NdtLab.Controllers.EmployeesInfo
             var employee = _mapper.Map<Employee>(input);
             _context.Employees.Add(employee);
             _context.SaveChanges();
-
+            // номера же вошли массивом стрингов и замапились в имплоя, маасив стрингов не вошел
+            // в public ICollection<Phone> Phones { get; set; } почему не вошел?
+            // а если не входит получается что передаются те данные которые передаются
+            // т.е мапит то что мапится а то что не мапится не передается
             foreach (var phoneNumber in input.PhoneNumbers)
             {
                 _context.Phones.Add(new Phone
