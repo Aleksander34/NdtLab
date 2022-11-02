@@ -1,4 +1,5 @@
 ﻿using NdtLab.core;
+using NdtLab.core.Joints;
 using NdtLab.Core.employeesInfo;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace NdtLab.Core.Requests
@@ -84,6 +85,7 @@ namespace NdtLab.Core.Requests
         /// Температура эксплуатации
         /// </summary>
         public int? Temperature { get; set; }
+        public ICollection<Joint> Joints { get; set; }
 
         public override string ToString()
         {
