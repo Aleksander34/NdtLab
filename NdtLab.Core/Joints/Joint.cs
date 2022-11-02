@@ -39,11 +39,11 @@ namespace NdtLab.core.Joints
         /// <summary>
         /// Статус текущих работ по стыку
         /// </summary>
-        public string? Status { get; set; }
+        public string Status { get; set; }
         /// <summary>
         /// Примечание
         /// </summary>
-        public string? Note { get; set; }
+        public string Note { get; set; }
         public virtual ICollection<DifficultJoint>DifficultJoints { get; set; }
         public virtual ICollection<WelderJoint> WelderJoints { get; set; }
 

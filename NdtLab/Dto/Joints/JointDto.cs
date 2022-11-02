@@ -2,14 +2,16 @@
 using NdtLab.core.Joints;
 using NdtLab.core.Welders;
 using NdtLab.Core.Joints;
+using NdtLab.Dto.Requests;
+using NdtLab.Dto.Welders;
 
 namespace NdtLab.Dto.Joints
 {
     [AutoMap(typeof(Joint), ReverseMap = true)]
-    public class CreateJointsDto
+    public class JointDto : EntityDto
     {
-        public int RequestId { get; set; }
-        public int ReestrId { get; set; }
+        public RequestDto Request  { get; set; }
+        public ReestrDto Reestr { get; set; }
         public string InspectionCompany { get; set; }
         public string Number { get; set; }
         public DateTime WeldingDate { get; set; }
@@ -24,9 +26,9 @@ namespace NdtLab.Dto.Joints
         public double DiameterOne { get; set; }
         public double DiameterTwo { get; set; }
         public double? WeldLength { get; set; }
-        public string? Status { get; set; }
-        public string? Note { get; set; }
-        public virtual ICollection<DifficultJoint> DifficultJoints { get; set; }   
-        public virtual ICollection<WelderJoint> WelderJoints { get; set; }      
+        public string Status { get; set; }
+        public string Note { get; set; }
+        public ICollection<DifficultDto> Difficults { get; set; }
+        public ICollection<WelderDto> Welders { get; set; }
     }
 }

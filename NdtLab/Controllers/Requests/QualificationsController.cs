@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
+using NdtLab.Dto.Requests;
 
 namespace NdtLab.Controllers.Requests
 {
@@ -16,33 +17,38 @@ namespace NdtLab.Controllers.Requests
             _mapper = mapper;
         }
 
-        [HttpPost("[action]")]
-        public IActionResult Create(Qualification qualification)
-        {
-            _context.Qualifications.Add(qualification);
-            _context.SaveChanges();
-            return Ok($"Квалификация {qualification} добавлена");
-        }
-
         [HttpGet("[action]")]
         public IActionResult GetAll()
         {
             var qualifications = _context.Qualifications.ToList();
-            return Ok(qualifications);
+            var result = _mapper.Map<IEnumerable<QualificationDto>>(qualifications);
+            return Ok(result);
+        }
+
+
+        [HttpPost("[action]")]
+        public IActionResult Create(QualificationDto input)
+        {
+            var qualification = _mapper.Map<Qualification>(input);
+            _context.Qualifications.Add(qualification);
+            _context.SaveChanges();
+
+            return Ok($"Квалификация {qualification.Id} добавлена");
         }
 
         [HttpPost("[action]")]
         public IActionResult Remove(int id)
         {
-            var qualification = _context.Qualifications.Find(id);
+            var qualification = _context.Qualifications.Find(id);  // а что если в пипинг будет несколько колонок с id. как искать именно в колонке id???
             _context.Qualifications.Remove(qualification);
             _context.SaveChanges();
-            return Ok($"Квалификация {qualification.Id} удалена");
+            return Ok($"Квалификация {qualification.Id} успешно удалена ");
         }
 
         [HttpPost("[action]")]
-        public IActionResult Update(Qualification qualification)
+        public IActionResult Update(QualificationDto input)
         {
+            var qualification = _mapper.Map<Qualification>(input);
             _context.Qualifications.Update(qualification);
             _context.SaveChanges();
             return Ok($"Квалификация {qualification.Id} обновлена");

@@ -1,32 +1,39 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.core.Joints;
 using NdtLab.Core;
+using NdtLab.Dto.Joints;
 
 namespace NdtLab.Controllers.Joints
 {
 
     public class JointsController : NdtLabController
     {
+        private readonly IMapper _mapper;
         private readonly NdtLabContext _context;
-        public JointsController(NdtLabContext context)
+        public JointsController(NdtLabContext context, IMapper mapper)
         {
             _context = context;
-        }
-
-        [HttpPost("[action]")]
-        public IActionResult Create(Joint joint)
-        {
-            _context.Joints.Add(joint);
-            _context.SaveChanges();
-            return Ok($"Стык {joint} добавлен");
+            _mapper = mapper;
         }
 
         [HttpGet("[action]")]
         public IActionResult GetAll()
         {
             var joints = _context.Joints.ToList();
-            return Ok(joints);
+            var result = _mapper.Map<IEnumerable<JointDto>>(joints);
+            return Ok(result);
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Create(JointDto input)
+        {
+            var joint = _mapper.Map<Joint>(input);
+            _context.Joints.Add(joint);
+            _context.SaveChanges();
+
+            return Ok($"Стык {joint.Id} добавлен");
         }
 
         [HttpPost("[action]")]
@@ -35,15 +42,16 @@ namespace NdtLab.Controllers.Joints
             var joint = _context.Joints.Find(id);
             _context.Joints.Remove(joint);
             _context.SaveChanges();
-            return Ok($"Стык {joint} удален");
+            return Ok($"Стык {joint.Id} удален");
         }
 
-        [HttpPost("[action]")]
-        public IActionResult Update(Joint joint)
+        [HttpGet("[action]")]
+        public IActionResult Update(JointDto input)
         {
+            var joint = _mapper.Map<Joint>(input);
             _context.Joints.Update(joint);
             _context.SaveChanges();
-            return Ok($"Стык {joint} обновлен");
+            return Ok($"Стык {joint.Id} обновлен");
         }
     }
 }
