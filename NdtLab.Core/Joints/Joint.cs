@@ -47,7 +47,7 @@ namespace NdtLab.core.Joints
         public string Note { get; set; }
         public virtual ICollection<DifficultJoint>DifficultJoints { get; set; }
         public virtual ICollection<WelderJoint> WelderJoints { get; set; }
-        public virtual ICollection<Inspection> Inspections { get; set; } // добавил
+        public virtual ICollection<Inspection> Inspections { get; set; }
 
         public override string ToString()
         {

@@ -45,7 +45,7 @@ namespace NdtLab.Controllers.Joints
             return Ok($"Стык {joint.Id} удален");
         }
 
-        [HttpGet("[action]")]
+        [HttpPost("[action]")]
         public IActionResult Update(JointDto input)
         {
             var joint = _mapper.Map<Joint>(input);

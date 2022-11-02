@@ -7,7 +7,7 @@ namespace NdtLab.Core.employeesInfo
     {
         public string Name { get; set; }
         public ICollection<Employee> Employees { get; set; }
-        public ICollection<Request> Requests { get; set; } // добавил
+        public ICollection<Request> Requests { get; set; }
 
         public override string ToString()
         {

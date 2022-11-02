@@ -11,6 +11,7 @@ namespace NdtLab.Core.Requests
         /// Номер сектора металлоконструкции
         /// </summary>
         public string Sector { get; set; }
+        public virtual ICollection<Request> Requests { get; set; }
 
         public override string ToString()
         {

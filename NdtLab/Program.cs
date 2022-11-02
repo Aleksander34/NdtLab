@@ -26,7 +26,7 @@ builder.Services.
 
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("asdfghjkl123456"))  //не менее 16 символов символы цифры 
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("asdfghjkl123456j"))  //не менее 16 символов символы цифры 
         };
     });
 

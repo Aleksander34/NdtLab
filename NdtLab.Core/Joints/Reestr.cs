@@ -1,4 +1,5 @@
 ﻿using NdtLab.core;
+using NdtLab.core.Joints;
 
 namespace NdtLab.Core.Joints
 {
@@ -14,6 +15,7 @@ namespace NdtLab.Core.Joints
         /// Кто получил
         /// </summary>
         public string Recipient { get; set; }
+        public virtual ICollection<Joint> Joints { get; set; }
 
         public override string ToString()
         {

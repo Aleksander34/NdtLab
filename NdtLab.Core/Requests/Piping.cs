@@ -15,6 +15,7 @@ namespace NdtLab.Core.Requests
         /// Номер спула/участка 
         /// </summary>
         public string Spool { get; set; }
+        public virtual ICollection<Request> Requests { get; set; }
 
         public override string ToString()
         {

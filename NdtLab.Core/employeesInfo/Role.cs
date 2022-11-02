@@ -6,7 +6,6 @@ namespace NdtLab.Core.employeesInfo
     public class Role : Entity
     {
         public string Name { get; set; }
-        [JsonIgnore]
         public ICollection<Employee> Users { get; set; }
 
         public override string ToString()

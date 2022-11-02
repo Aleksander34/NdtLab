@@ -44,7 +44,7 @@ namespace NdtLab.Controllers.Requests
             return Ok($"Заявка {request.Id} удалена");
         }
 
-        [HttpGet("[action]")]
+        [HttpPost("[action]")]
         public IActionResult Update(RequestDto input)
         {
             var request = _mapper.Map<Request>(input);

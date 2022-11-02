@@ -19,6 +19,7 @@ public class ReferencesDoc : Entity
     /// Документ по оценке качества
     /// </summary>
     public string QualityCriteria { get; set; }
+    public virtual ICollection<Request> Requests { get; set; }
 
     public override string ToString()
     {

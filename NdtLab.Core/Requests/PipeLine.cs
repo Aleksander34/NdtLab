@@ -7,7 +7,7 @@ namespace NdtLab.Core.Requests
         /// Километр магистрального трубопровода
         /// </summary>
         public string Distance { get; set; }
-        // надо ли сюда массив заявок засунуть?
+        public virtual ICollection<Request> Requests { get; set; }
         public override string ToString()
         {
             return $"{{ distance: {Distance}}}";

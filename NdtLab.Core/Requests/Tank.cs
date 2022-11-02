@@ -8,6 +8,7 @@ public class Tank : Entity
     /// Часть резервуара
     /// </summary>
     public PartTank Part { get; set; }
+    public virtual ICollection<Request> Requests { get; set; }
     public override string ToString()
     {
         return $"{{ part: {Part}}}";
