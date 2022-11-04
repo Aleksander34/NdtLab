@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NdtLab.Core;
+using NdtLab.Core.employeesInfo;
 using NdtLab.Dto.Account;
+using NdtLab.Dto.EmployeesInfo;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -13,9 +16,12 @@ namespace NdtLab.Controllers
     public class AccountController : NdtLabController
     {
         private readonly NdtLabContext _context;
-        public AccountController(NdtLabContext context)
+
+        private readonly IMapper _mapper;
+        public AccountController(NdtLabContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpPost("[action]")]
@@ -58,6 +64,20 @@ namespace NdtLab.Controllers
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, employee.Role.Name)
             };
             return new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Registration(EmployeeDto input)  //потом расшитрить больше информации информация фио подразделение
+        {
+            var employee = _context.Employees.SingleOrDefault(e => e.Login == input.Login && e.Password == input.Password);
+            if (employee != null)
+            {
+                return BadRequest("Аккаунт занят");
+            }
+            employee = _mapper.Map<Employee>(input);
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
+            return Ok("Аккаунт успешно создан");
         }
     }
 }

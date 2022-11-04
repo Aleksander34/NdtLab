@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NdtLab.core.Joints;
@@ -7,7 +8,7 @@ using NdtLab.Dto.Joints;
 
 namespace NdtLab.Controllers.Joints
 {
-
+    [Authorize]
     public class JointsController : NdtLabController
     {
         private readonly IMapper _mapper;
@@ -17,7 +18,8 @@ namespace NdtLab.Controllers.Joints
             _context = context;
             _mapper = mapper;
         }
-
+        [Authorize(Roles = "Директор")]
+        
         [HttpGet("[action]")]
         public IActionResult GetAll()
         {
@@ -25,7 +27,7 @@ namespace NdtLab.Controllers.Joints
             var result = _mapper.Map<IEnumerable<JointDto>>(joints);
             return Ok(result);
         }
-
+        [Authorize(Roles = "Работник")]
         [HttpPost("[action]")]
         public IActionResult Create(JointDto input)
         {
