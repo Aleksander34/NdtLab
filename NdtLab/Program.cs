@@ -65,6 +65,13 @@ builder.Services.
         };
     });
 
+builder.Services.AddCors(x => {
+    x.AddPolicy("free", y =>
+    {
+        y.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -74,7 +81,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection(); пока отключаем
+app.UseCors("free");
 
 app.UseAuthentication();
 
