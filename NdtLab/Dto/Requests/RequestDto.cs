@@ -39,5 +39,6 @@ namespace NdtLab.Dto.Requests
 
         public string OtherCategory { get; set; }
         public int? Temperature { get; set; }
+
     }
 }
