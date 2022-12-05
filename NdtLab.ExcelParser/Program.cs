@@ -50,7 +50,6 @@ using (var excel = new ExcelPackage(file))
         string end = worksheet.Cells[$"A{row}"].Value.ToString().Trim();
         if (end == "конец ввода")
             break;
-
         result.Joints.Add(GetJoint(worksheet, row));
     }
 
@@ -71,7 +70,6 @@ static JointDto GetJoint(ExcelWorksheet worksheet, int row)
     result.ThicknessOne = Double.Parse(worksheet.Cells[$"I{row}"].Value.ToString().Trim());
     result.ThicknessTwo = Double.Parse(worksheet.Cells[$"J{row}"].Value.ToString().Trim());
     result.Inspection.Name = //?
-
     result.WeldLength = Double.Parse(worksheet.Cells[$"L{row}"].Value.ToString().Trim());
     result.Note = worksheet.Cells[$"M{row}"].Value.ToString().Trim();
     return result;
