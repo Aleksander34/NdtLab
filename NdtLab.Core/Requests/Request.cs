@@ -84,7 +84,7 @@ namespace NdtLab.Core.Requests
         /// <summary>
         /// Температура эксплуатации
         /// </summary>
-        public int? Temperature { get; set; }
+        public int? Temperature { get; set; }  // переписать в стринг
         public ICollection<Joint> Joints { get; set; }
 
         public override string ToString()
