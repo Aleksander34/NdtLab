@@ -42,6 +42,13 @@ namespace NdtLab.Core.Requests
         public int DivisionId { get; set; }
         [ForeignKey("DivisionId")]
         public Division Division { get; set; }
+        /// <summary>
+        /// Заявку принял кто
+        /// </summary>
+        public int ReceivedById { get; set; } //TODO: добавить имплоя
+        [ForeignKey("ReceivedById")]
+        public ReceivedBy ReceivedBy { get; set; }
+
         public int? QualificationId { get; set; }
         [ForeignKey("QualificationId")]
         public Qualification Qualification { get; set; }
@@ -84,7 +91,7 @@ namespace NdtLab.Core.Requests
         /// <summary>
         /// Температура эксплуатации
         /// </summary>
-        public int? Temperature { get; set; }  // переписать в стринг
+        public int? Temperature { get; set; }  //TODO: переписать в стринг
         public ICollection<Joint> Joints { get; set; }
 
         public override string ToString()
