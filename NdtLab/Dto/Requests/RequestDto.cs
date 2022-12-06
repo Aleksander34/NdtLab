@@ -39,6 +39,9 @@ namespace NdtLab.Dto.Requests
 
         public string OtherCategory { get; set; }
         public int? Temperature { get; set; }
+        public string SubmittedBy { get; set; }
+        public string ReceivedByFio { get; set; }
+        public string ReceivedById { get; set; } //TODO: Надо добавить в БД
 
     }
 }

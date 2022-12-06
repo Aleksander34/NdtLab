@@ -31,5 +31,6 @@ namespace NdtLab.Dto.Joints
         public ICollection<DifficultDto> Difficults { get; set; }
         public ICollection<WelderDto> Welders { get; set; }
         public string Stamps { get; set; }
+        public string RequiredInspection { get; set; }
     }
 }

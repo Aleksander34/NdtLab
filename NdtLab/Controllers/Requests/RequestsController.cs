@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
 using NdtLab.Dto.Requests;
+using System.Reflection;
 
 namespace NdtLab.Controllers.Requests
 {
@@ -51,6 +52,23 @@ namespace NdtLab.Controllers.Requests
             _context.Requests.Update(request);
             _context.SaveChanges();
             return Ok($"Заяка {request.Id} обновлена");
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult GetPreviewRequest(IFormFile input)
+        {
+            string pathToFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (!System.IO.Directory.Exists(Path.Combine(pathToFolder, "TemporaryRequest")))
+            {
+                Directory.CreateDirectory(Path.Combine(pathToFolder, "TemporaryRequest"));
+            }
+
+            string pathToFile = Path.Combine(pathToFolder, "TemporaryRequest", input.FileName);
+            using (var stream = System.IO.File.Create(pathToFile)) 
+            {
+                input.CopyTo(stream);
+            }
+            return Ok();
         }
     }
 }

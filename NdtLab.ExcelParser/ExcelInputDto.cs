@@ -16,5 +16,7 @@ namespace NdtLab.ExcelParser
         public List<JointDto> Joints { get; set; }
         public DivisionDto Division { get; set; }
         public InspectionDto Inspection { get; set; }
+        public string TankPart { get; set; }
+        public string QualificationType { get; set; }
     }
 }
