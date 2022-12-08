@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NdtLab.Core;
 using NdtLab.Core.Requests;
 using NdtLab.Dto.Requests;
+using NdtLab.Excel;
 using System.Reflection;
 
 namespace NdtLab.Controllers.Requests
@@ -55,7 +56,7 @@ namespace NdtLab.Controllers.Requests
         }
 
         [HttpPost("[action]")]
-        public IActionResult GetPreviewRequest(IFormFile input)
+        public IActionResult GetPreviewRequest([FromForm]IFormFile input)
         {
             string pathToFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             if (!System.IO.Directory.Exists(Path.Combine(pathToFolder, "TemporaryRequest")))
@@ -68,7 +69,9 @@ namespace NdtLab.Controllers.Requests
             {
                 input.CopyTo(stream);
             }
-            return Ok();
+            var result = ExcelParcerUtil.ParseRequest(pathToFile);
+            System.IO.File.Delete(pathToFile);
+            return Ok(result);
         }
     }
 }
