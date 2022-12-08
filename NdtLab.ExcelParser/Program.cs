@@ -45,8 +45,8 @@ using (var excel = new ExcelPackage(file))
     result.Request.ReferencesDoc.InspectionDoc = worksheet.Cells["C15"]?.Value?.ToString().Trim();
     result.Request.ReferencesDoc.QualityCriteria = worksheet.Cells["C16"]?.Value?.ToString().Trim();
 
-    result.Request.SubmittedBy = worksheet.Cells["D18"]?.Value?.ToString().Trim(); //TODO: создать в заявке сущность отправил кто
-    result.Request.ReceivedByFio = worksheet.Cells["K18"]?.Value?.ToString().Trim();  //TODO: создать в заявке сущность получил кто
+    result.Request.SubmittedBy = worksheet.Cells["D18"]?.Value?.ToString().Trim(); //TODO: ?
+    result.Request.ReceivedByFio = worksheet.Cells["K18"]?.Value?.ToString().Trim();  //TODO: ?
 
     for (int row = 21; ; row++) // начинаем с 21 строки и каждый раз увеличиваем на 1
     {

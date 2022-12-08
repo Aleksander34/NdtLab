@@ -45,7 +45,7 @@ namespace NdtLab.Core.Requests
         /// <summary>
         /// Заявку принял кто
         /// </summary>
-        public int ReceivedById { get; set; } //TODO: добавить имплоя
+        public int ReceivedById { get; set; }  //TODO:?
         [ForeignKey("ReceivedById")]
         public ReceivedBy ReceivedBy { get; set; }
 
@@ -84,6 +84,12 @@ namespace NdtLab.Core.Requests
         /// Категория ГОСТ
         /// </summary>
         public string CategoryGost { get; set; }
+
+        /// <summary>
+        /// Заявку оформил
+        /// </summary>
+        public string SubmittedBy { get; set; } //TODO:?
+
         /// <summary>
         /// Иная категория
         /// </summary>

@@ -21,6 +21,8 @@ namespace NdtLab.Dto.Requests
 
         public QualificationDto Qualification { get; set; }
 
+        public ReceivedByDto ReceivedBy { get; set; } //TODO:?
+
         public bool? Rebar { get; set; }
 
         public string WeldingCompany { get; set; }
@@ -39,7 +41,7 @@ namespace NdtLab.Dto.Requests
 
         public string OtherCategory { get; set; }
         public int? Temperature { get; set; }
-        public string SubmittedBy { get; set; }
+        public string SubmittedBy { get; set; } //TODO:?
         public string ReceivedByFio { get; set; }
         public string ReceivedById { get; set; } //TODO: Надо добавить в БД
 
