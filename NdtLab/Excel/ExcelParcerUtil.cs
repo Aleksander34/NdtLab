@@ -28,6 +28,7 @@ namespace NdtLab.Excel
                 result.Division.Name = worksheet.Cells["E5"].Value.ToString().Trim();
                 result.Request.Object = worksheet.Cells["E6"].Value.ToString().Trim();
                 result.Request.PartObject = worksheet.Cells["E7"]?.Value?.ToString().Trim();
+                
                 result.Request.Draw = worksheet.Cells["E8"]?.Value?.ToString().Trim();
                 result.Request.CategoryGost = worksheet.Cells["E9"].Value.ToString().Trim();
                 result.Request.OtherCategory = worksheet.Cells["E10"]?.Value?.ToString().Trim();
@@ -71,16 +72,20 @@ namespace NdtLab.Excel
             result.Number = worksheet.Cells[$"A{row}"].Value.ToString().Trim();
             result.WeldingDate = DateTime.Parse(worksheet.Cells[$"B{row}"].Value.ToString().Trim());
             result.WeldingType = worksheet.Cells[$"C{row}"].Value.ToString().Trim();
-            result.WeldingType = worksheet.Cells[$"D{row}"].Value.ToString().Trim();
+            result.ConnectionType = worksheet.Cells[$"D{row}"].Value.ToString().Trim();
             result.ElementOne = worksheet.Cells[$"E{row}"].Value.ToString().Trim();
             result.ElementTwo = worksheet.Cells[$"F{row}"].Value.ToString().Trim();
             result.DiameterOne = double.Parse(worksheet.Cells[$"G{row}"].Value.ToString().Trim());
             result.DiameterTwo = double.Parse(worksheet.Cells[$"H{row}"].Value.ToString().Trim());
             result.ThicknessOne = double.Parse(worksheet.Cells[$"I{row}"].Value.ToString().Trim());
             result.ThicknessTwo = double.Parse(worksheet.Cells[$"J{row}"].Value.ToString().Trim());
-            result.RequiredInspection = worksheet.Cells[$"K{row}"].Value.ToString().Trim();
-            result.WeldLength = double.Parse(worksheet.Cells[$"L{row}"].Value.ToString().Trim());
-            result.Note = worksheet.Cells[$"M{row}"].Value.ToString().Trim();
+
+            result.GradeOne = worksheet.Cells[$"K{row}"].Value.ToString().Trim();
+            result.GradeTwo = worksheet.Cells[$"L{row}"].Value.ToString().Trim();
+            result.Stamps = worksheet.Cells[$"M{row}"].Value.ToString().Trim();
+            result.RequiredInspection = worksheet.Cells[$"N{row}"].Value.ToString().Trim();
+            result.WeldLength = double.Parse(worksheet.Cells[$"O{row}"].Value.ToString().Trim());
+            result.Note = worksheet.Cells[$"P{row}"].Value.ToString().Trim();
             return result;
         }
     }
